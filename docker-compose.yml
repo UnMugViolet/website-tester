@@ -1,6 +1,7 @@
 version: "3"
 
 services:
+
   sonarqube:
     image: sonarqube:community
     depends_on:
@@ -18,6 +19,15 @@ services:
     ports:
       - "9000:9000"
 
+  jenkins:
+    image: jenkins/jenkins:lts
+    ports:
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./jenkins_home:/var/jenkins_home
+
+
   # Database link to the sonarqube container
   postgres:
     image: postgres:12
@@ -27,15 +37,7 @@ services:
       POSTGRES_DB: sonarqube
     volumes:
       - ./postgres_data:/var/lib/postgresql/data
-
-  jenkins:
-    image: jenkins/jenkins:lts
-    ports:
-      - "8080:8080"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - ./jenkins_home:/var/jenkins_home
-
+      
  # Database linked to the jenkins container
   mariadb:
     image: mariadb:latest
