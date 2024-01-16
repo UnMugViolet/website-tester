@@ -5,6 +5,9 @@ This website tester uses Jenkins and Sonarqube with Databases linked in the cont
 # Installation Instructions
 
 1. Clone the repository
+```bash
+  git clone git@github.com:UnMugViolet/website-tester.git
+```
    
 3. Navigate to the cloned repository
 ```bash
