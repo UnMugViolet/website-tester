@@ -5,10 +5,12 @@ services:
     image: sonarqube:community
     depends_on:
       - postgres
+    links:
+      - postgres
     environment:
-      SONAR_JDBC_URL: jdbc:postgresql://db:5432/sonarqube
+      SONAR_JDBC_URL: jdbc:postgresql://postgres:5432/sonarqube
       SONAR_JDBC_USERNAME: sonarqube
-      SONAR_JDBC_PASSWORD: my-secret-pw # Modify that password
+      SONAR_JDBC_PASSWORD: SonarQubeUser35!! # Modify that password
     volumes:
       - ./sonarqube_data:/opt/sonarqube/data
       - ./sonarqube_extensions:/opt/sonarqube/extensions
@@ -21,7 +23,7 @@ services:
     image: postgres:12
     environment:
       POSTGRES_USER: sonarqube
-      POSTGRES_PASSWORD: my-secret-pw # Modify that password
+      POSTGRES_PASSWORD: SonarQubeUser35!! # Modify that password
       POSTGRES_DB: sonarqube
     volumes:
       - ./postgres_data:/var/lib/postgresql/data
@@ -38,7 +40,7 @@ services:
   mariadb:
     image: mariadb:latest
     environment:
-      MYSQL_ROOT_PASSWORD: my-secret-pw # Modify that password
+      MYSQL_ROOT_PASSWORD: JenkinsUser35?! # Modify that password
       MYSQL_DATABASE: jenkins
       MYSQL_USER: jenkins
       MYSQL_PASSWORD: jenkins
