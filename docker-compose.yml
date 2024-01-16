@@ -49,4 +49,4 @@ services:
     volumes:
       - ./mariadb_data:/var/lib/mysql
     ports:
-      - "3307:3307"
+      - "5008:5008"
